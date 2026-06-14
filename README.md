@@ -27,9 +27,20 @@ import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-/main/dist/鸣潮/%E8%84%9A%
 
 ## CG / 本地资源
 
-- 本仓库默认只含 **脚本** 与 **资源索引 JSON**（`cgSceneIndex.json`、`mediaLocalMap.json`）。
-- 未上传 `dist/鸣潮/assets/cg/` 时，CG 会回退到 **catbox** 远程 URL（见 `mediaLocalMap.json`）。
-- 若需 CDN 本地 CG：将 `assets/cg` 一并放入本仓库（体积较大，建议 Git LFS）或自建静态站，脚本会通过 `import.meta.url` 自动解析 `…/assets/` 路径。
+- 本仓库 **CG/多媒体** 使用 **Git LFS**（约 2GB）；脚本从 jsDelivr 加载时，资源自动走 `media.githubusercontent.com`。
+- 未上传 LFS 资源时，CG 会回退到 **catbox**（见 `mediaLocalMap.json`）。
+
+### Git LFS 上传
+
+```bash
+# 在模板项目内（保留 release/wuwa-cdn 已有 .git）
+node src/鸣潮/工具/packageWuwaDeploy.mjs --skip-build --with-assets --no-clean
+cd release/wuwa-cdn
+git lfs install
+git add -A
+git commit -m "add CG assets via Git LFS"
+git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 push
+```
 
 ## 开发
 
