@@ -33,8 +33,8 @@ import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-/main/dist/鸣潮/%E8%84%9A%
 ### Git LFS 上传
 
 ```bash
-# 在模板项目内（保留 release/wuwa-cdn 已有 .git）
-node src/鸣潮/工具/packageWuwaDeploy.mjs --skip-build --with-assets --no-clean
+# 在模板项目内（保留 release/wuwa-cdn 已有 .git；会镜像 dist，删除 release 中多余旧文件）
+node src/鸣潮/工具/packageWuwaDeploy.mjs --with-assets --no-clean
 cd release/wuwa-cdn
 git lfs install
 git add -A
