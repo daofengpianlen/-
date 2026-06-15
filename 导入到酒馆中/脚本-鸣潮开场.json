@@ -3,8 +3,8 @@
   "enabled": true,
   "name": "鸣潮开场",
   "id": "55647d6b-e5bd-4fa2-b73b-35a89fab9b70",
-  "content": "import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-/main/dist/鸣潮/%E8%84%9A%E6%9C%AC/%E5%BC%80%E5%9C%BA/index.js'",
-  "info": "替代 regex-鸣潮开场。开发时需同时运行 pnpm watch 与 pnpm serve:dist，并开启酒馆助手「允许监听」。 [CDN: https://cdn.jsdelivr.net/gh/daofengpianlen/-/main]",
+  "content": "import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/dist/鸣潮/%E8%84%9A%E6%9C%AC/%E5%BC%80%E5%9C%BA/index.js'",
+  "info": "替代 regex-鸣潮开场。开发时需同时运行 pnpm watch 与 pnpm serve:dist，并开启酒馆助手「允许监听」。 [CDN: https://cdn.jsdelivr.net/gh/daofengpianlen/-@main]",
   "button": {
     "enabled": false,
     "buttons": []

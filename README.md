@@ -5,7 +5,7 @@
 ## CDN 根地址
 
 ```
-https://cdn.jsdelivr.net/gh/daofengpianlen/-/main
+https://cdn.jsdelivr.net/gh/daofengpianlen/-@main
 ```
 
 ## 导入酒馆
@@ -22,7 +22,7 @@ https://cdn.jsdelivr.net/gh/daofengpianlen/-/main
 也可直接在脚本内容里写：
 
 ```javascript
-import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-/main/dist/鸣潮/%E8%84%9A%E6%9C%AC/%E4%BC%AA%E5%90%8C%E5%B1%82/index.js'
+import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/dist/鸣潮/%E8%84%9A%E6%9C%AC/%E4%BC%AA%E5%90%8C%E5%B1%82/index.js'
 ```
 
 ## CG / 本地资源
@@ -48,7 +48,7 @@ git -c http.proxy=http://127.0.0.1:7897 -c https.proxy=http://127.0.0.1:7897 pus
 
 ```bash
 # 在模板项目内
-node src/鸣潮/工具/packageWuwaDeploy.mjs --cdn-base=https://cdn.jsdelivr.net/gh/daofengpianlen/-/main
+node src/鸣潮/工具/packageWuwaDeploy.mjs --cdn-base=https://cdn.jsdelivr.net/gh/daofengpianlen/-@main
 ```
 
 然后提交 `release/wuwa-cdn` 目录内容到本仓库 `main` 分支。
