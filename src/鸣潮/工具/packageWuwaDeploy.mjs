@@ -203,7 +203,7 @@ import '${scriptImportUrl('脚本/伪同层/index.js')}'
 
 ## CG / 本地资源
 
-- 本仓库 **CG/多媒体** 使用 **Git LFS**（约 2GB）；脚本从 jsDelivr 加载时，资源自动走 \`media.githubusercontent.com\`。
+- 本仓库 **CG/多媒体** 使用 **Git LFS**（约 2GB），资源通过 jsDelivr CDN 直接加载。
 - 未上传 LFS 资源时，CG 会回退到 **catbox**（见 \`mediaLocalMap.json\`）。
 
 ### Git LFS 上传

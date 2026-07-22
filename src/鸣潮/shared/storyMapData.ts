@@ -37,9 +37,9 @@ export const FALLBACK_STORY_MAP: readonly StoryVersion[] = [
   {
     version: '3.4',
     parts: [
-      '(简) 🌙边缘幻梦 (上)',
-      '(简) 🌙边缘幻梦 (中)',
-      '(简) 🌙边缘幻梦 (下)',
+      '边缘幻梦（上）',
+      '边缘幻梦（中）',
+      '边缘幻梦（下）',
       '我们选择天空（上）',
       '我们选择天空（下）',
     ],
