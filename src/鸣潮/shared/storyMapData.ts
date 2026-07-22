@@ -54,15 +54,39 @@ export const FALLBACK_STORY_MAP: readonly StoryVersion[] = [
 export const STORY_MAP_APPEND_PARTS: Record<string, readonly string[]> = {};
 
 export function patchStoryMap(storyMap: readonly StoryVersion[]): StoryVersion[] {
-  return storyMap.map(ver => {
-    const appendParts = STORY_MAP_APPEND_PARTS[ver.version];
-    if (!appendParts?.length) return { ...ver, parts: [...ver.parts] };
-    const parts = [...ver.parts];
-    for (const title of appendParts) {
-      if (!parts.includes(title)) parts.push(title);
+  const inputMap = new Map(storyMap.map(v => [v.version, v]));
+  const result: StoryVersion[] = [];
+
+  // 以 FALLBACK_STORY_MAP 顺序遍历：输入中存在的版本合并 parts，不存在的直接追加
+  for (const fb of FALLBACK_STORY_MAP) {
+    const input = inputMap.get(fb.version);
+    if (input) {
+      // 合并：输入 parts 优先，追加 fallback 中不存在于输入的 parts
+      const parts = [...input.parts];
+      for (const p of fb.parts) {
+        if (!parts.includes(p)) parts.push(p);
+      }
+      // 额外追加 STORY_MAP_APPEND_PARTS 中定义的章节
+      const appendParts = STORY_MAP_APPEND_PARTS[fb.version];
+      if (appendParts?.length) {
+        for (const title of appendParts) {
+          if (!parts.includes(title)) parts.push(title);
+        }
+      }
+      result.push({ version: fb.version, parts });
+      inputMap.delete(fb.version);
+    } else {
+      // 仅 fallback 中存在（如新增的 v3.4、v3.5）
+      result.push({ ...fb, parts: [...fb.parts] });
     }
-    return { ...ver, parts };
-  });
+  }
+
+  // 输入中存在但 fallback 中不存在的版本（如外部已更新的未来版本），追加到末尾
+  for (const [, ver] of inputMap) {
+    result.push({ ...ver, parts: [...ver.parts] });
+  }
+
+  return result;
 }
 
 export function getPatchedStoryMap(source: readonly StoryVersion[] = FALLBACK_STORY_MAP): StoryVersion[] {
