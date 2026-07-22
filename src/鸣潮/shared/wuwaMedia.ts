@@ -45,7 +45,7 @@ function assetsBaseFromModuleUrl(moduleUrl: string): string | null {
   return replaced !== href ? replaced : null;
 }
 
-/** jsDelivr 不提供 Git LFS 二进制；脚本/资源 URL 含 jsdelivr 时改走 GitHub LFS media 域 */
+/** 从 jsDelivr 模块 URL 提取 assets 根路径 */
 function assetsBaseFromJsDelivrModule(moduleUrl: string): string | null {
   const href = decodeUrl(moduleUrl);
   const m = href.match(/cdn\.jsdelivr\.net\/gh\/([^/]+)\/([^/@]+)(?:@([^/]+))?/i);
@@ -53,21 +53,11 @@ function assetsBaseFromJsDelivrModule(moduleUrl: string): string | null {
   const user = m[1];
   const repo = m[2];
   const branch = m[3] ?? 'main';
-  return `https://media.githubusercontent.com/media/${user}/${repo}/${branch}/dist/${WUWA_PROJECT_SEGMENT}/assets/`;
+  return `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/dist/${WUWA_PROJECT_SEGMENT}/assets/`;
 }
 
-/** 任意已解析的 assets 根路径：jsDelivr 会 404 或只返回 LFS 指针，统一改 media 域 */
+/** 标准化 assets 根路径：确保以 / 结尾 */
 function normalizeAssetsBase(base: string): string {
-  const decoded = decodeUrl(base);
-  const direct = decoded.match(
-    /cdn\.jsdelivr\.net\/gh\/([^/]+)\/([^/@]+)(?:@([^/]+))?\/dist\/[^/]+\/assets\/?/i,
-  );
-  if (direct) {
-    const branch = direct[3] ?? 'main';
-    return `https://media.githubusercontent.com/media/${direct[1]}/${direct[2]}/${branch}/dist/${WUWA_PROJECT_SEGMENT}/assets/`;
-  }
-  const fromModule = assetsBaseFromJsDelivrModule(decoded);
-  if (fromModule) return fromModule;
   return base.endsWith('/') ? base : `${base}/`;
 }
 
@@ -86,7 +76,7 @@ function assetsBaseFromPerformance(): string | null {
 
 
 export const WUWA_DEFAULT_CDN_ASSETS_BASE =
-  'https://media.githubusercontent.com/media/daofengpianlen/-/main/dist/鸣潮/assets/';
+  'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/dist/鸣潮/assets/';
 
 export function resolveWuwaAssetsBase(): string {
   return normalizeAssetsBase(WUWA_DEFAULT_CDN_ASSETS_BASE);

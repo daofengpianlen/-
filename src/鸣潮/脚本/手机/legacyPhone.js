@@ -7960,7 +7960,7 @@ function processMessageImages(content) {
         finalMediaUrl = wuwaResolveMedia(finalMediaUrl);
 
         // 内置局部的强力探测器，不再依赖外部可能丢失的全局函数
-        const isVid = finalMediaUrl && finalMediaUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/i) !== null;
+        const isVid = finalMediaUrl && finalMediaUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?|$)/i) !== null;
 
         if (isVid) {
             return `<div class="message-image-container" style="margin: 8px 0;">
@@ -10098,7 +10098,7 @@ function getGalleryGroupVirtualActive(groupName, mergedUnlocked) {
 
 function isVideoUrl(url) {
     if (!url) return false;
-    return /\.(mp4|webm|ogg|mov)$/i.test(url);
+    return /\.(mp4|webm|ogg|mov)(\?|$)/i.test(url);
 }
 
 function getUnlockedCG(includeVirtual = false) {
@@ -10602,7 +10602,7 @@ function generateGalleryPanel(data) {
                 const imgUrl = getCGImageUrl(sourceChar, sceneType, 1);
 
                 // 判断后缀
-                const isVid = imgUrl && imgUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)$/i) !== null;
+                const isVid = imgUrl && imgUrl.toLowerCase().match(/\.(mp4|webm|ogg|mov)(\?|$)/i) !== null;
 
                 const mediaHtml = isVid
                     ? `<video src="${imgUrl}" autoplay loop muted playsinline style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"></video>`
