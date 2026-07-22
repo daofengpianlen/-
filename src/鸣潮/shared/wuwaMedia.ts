@@ -53,7 +53,7 @@ function assetsBaseFromJsDelivrModule(moduleUrl: string): string | null {
   const user = m[1];
   const repo = m[2];
   const branch = m[3] ?? 'main';
-  return `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/dist/${WUWA_PROJECT_SEGMENT}/assets/`;
+  return `https://cdn.jsdelivr.net/gh/${user}/${repo}@${branch}/src/${WUWA_PROJECT_SEGMENT}/assets/`;
 }
 
 /** 标准化 assets 根路径：确保以 / 结尾 */
@@ -76,7 +76,7 @@ function assetsBaseFromPerformance(): string | null {
 
 
 export const WUWA_DEFAULT_CDN_ASSETS_BASE =
-  'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/dist/鸣潮/assets/';
+  'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/src/鸣潮/assets/';
 
 export function resolveWuwaAssetsBase(): string {
   return normalizeAssetsBase(WUWA_DEFAULT_CDN_ASSETS_BASE);

@@ -72,10 +72,10 @@ function ensurePhoneStylesInDocument(doc: Document) {
   hub_rules.textContent = HUB_OVERLAY_CSS;
   doc.head.appendChild(hub_rules);
 
-  if (!doc.querySelector('link[href*="font-awesome"]')) {
+  if (!doc.querySelector('link[href*="font-awesome"], link[href*="fontawesome"]')) {
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css';
     link.crossOrigin = 'anonymous';
     doc.head.appendChild(link);
   }

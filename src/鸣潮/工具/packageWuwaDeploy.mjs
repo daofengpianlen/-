@@ -88,7 +88,7 @@ function countFiles(dir) {
 }
 
 function scriptImportUrl(distRel) {
-  return `${CDN_BASE}/dist/鸣潮/${distRel.split('/').map(encodeURIComponent).join('/')}`;
+  return `${CDN_BASE}/src/鸣潮/${distRel.split('/').map(encodeURIComponent).join('/')}`;
 }
 
 function writeGitLfsAttributes(outDir) {

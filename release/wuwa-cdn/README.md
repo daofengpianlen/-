@@ -22,7 +22,7 @@ https://cdn.jsdelivr.net/gh/daofengpianlen/-@main
 也可直接在脚本内容里写：
 
 ```javascript
-import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/dist/鸣潮/%E8%84%9A%E6%9C%AC/%E4%BC%AA%E5%90%8C%E5%B1%82/index.js'
+import 'https://cdn.jsdelivr.net/gh/daofengpianlen/-@main/src/鸣潮/%E8%84%9A%E6%9C%AC/%E4%BC%AA%E5%90%8C%E5%B1%82/index.js'
 ```
 
 ## CG / 本地资源

@@ -10,7 +10,7 @@ function loadFontAwesome() {
     // 通过 link 标签加载（异步，不会阻塞渲染）
     const link = doc.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+    link.href = 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css';
     link.crossOrigin = 'anonymous';
     doc.head.appendChild(link);
 }
