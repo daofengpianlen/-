@@ -24,13 +24,34 @@ export const FALLBACK_STORY_MAP: readonly StoryVersion[] = [
   { version: '3.0', parts: ['未知的既感', '冰原下的星炬', '致第二次日出', '第三幕终'] },
   { version: '3.1', parts: ['远航星', '日光落处 (上)', '日光落处 (中)', '日光落处 (下)'] },
   { version: '3.2', parts: ['影下不落的黄金', '影面颠倒的兔影'] },
-  { version: '3.3', parts: ['愿系铃中', '昨夜群星'] },
+  {
+    version: '3.3',
+    parts: [
+      '愿系铃中',
+      '昨夜群星',
+      '在熔解的夜空下 (上)',
+      '在熔解的夜空下 (中)',
+      '在熔解的夜空下 (下)',
+    ],
+  },
+  {
+    version: '3.4',
+    parts: [
+      '(简) 🌙边缘幻梦 (上)',
+      '(简) 🌙边缘幻梦 (中)',
+      '(简) 🌙边缘幻梦 (下)',
+      '我们选择天空（上）',
+      '我们选择天空（下）',
+    ],
+  },
+  {
+    version: '3.5',
+    parts: ['遗音扶剑，荡梦而歌（上）', '遗音扶剑，荡梦而歌（中）', '遗音扶剑，荡梦而歌（下）'],
+  },
 ];
 
 /** 角色卡共享脚本尚未更新时，由本地补齐的章节 */
-export const STORY_MAP_APPEND_PARTS: Record<string, readonly string[]> = {
-  '3.3': ['在熔解的夜空下'],
-};
+export const STORY_MAP_APPEND_PARTS: Record<string, readonly string[]> = {};
 
 export function patchStoryMap(storyMap: readonly StoryVersion[]): StoryVersion[] {
   return storyMap.map(ver => {
